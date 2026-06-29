@@ -1,0 +1,34 @@
+.filter-bar {
+  margin-bottom: var(--space-lg);
+  animation: slideDown var(--transition-fast) ease-out;
+}
+
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.filter-select {
+  min-width: 140px;
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+  background: var(--bg-tertiary);
+}
+
+.clear-filters {
+  color: var(--status-blocked) !important;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .filter-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-select {
+    min-width: 100%;
+  }
+}
