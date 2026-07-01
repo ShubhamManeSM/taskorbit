@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import API from '../api/axios';
+import { useAuth } from '../context/AuthContext';
 import './Login.css';
 
 export default function Signup() {
@@ -8,6 +8,7 @@ export default function Signup() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { signup } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,8 +16,8 @@ export default function Signup() {
     setLoading(true);
 
     try {
-      await API.post('/auth/register', formData);
-      navigate('/login');
+      await signup(formData.name, formData.email, formData.password);
+      navigate('/');
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed. Please try again.');
     } finally {
